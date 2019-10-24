@@ -50,15 +50,6 @@
               login {{ repo_login }}
               password {{ repo_pass }}
           create: yes        
-      
-    - apt_repository:
-        repo: "{{ repo_netis }}"
-        state: present
-        
-        
-    - name: Zmiana hostname na kasaX    
-      hostname:
-        name: kasaX
 
     - name: Wylaczenie aktualizcji apta na czas instalacji
       systemd:
@@ -68,6 +59,16 @@
         - apt-daily.service  
         - apt-daily.timer  
         - apt-daily-upgrade.timer  
+
+      
+    - apt_repository:
+        repo: "{{ repo_netis }}"
+        state: present
+        
+        
+    - name: Zmiana hostname na kasaX    
+      hostname:
+        name: kasaX
 
     - name: Usuniecie paczek gnome, kde, lightdm
       apt:
