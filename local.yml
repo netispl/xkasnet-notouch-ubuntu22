@@ -65,7 +65,7 @@
         name: "{{ item }}"
       loop:
         - apt-daily.service  
-        - apt-daily-timer  
+        - apt-daily.timer  
 
     - name: Usuniecie paczek gnome, kde, lightdm
       apt:
