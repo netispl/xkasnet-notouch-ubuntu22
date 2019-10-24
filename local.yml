@@ -60,7 +60,7 @@
       hostname:
         name: kasaX
 
-    - name: Make sure a service is running
+    - name: Wylaczenie aktualizcji apta na czas instalacji
       systemd:
         state: stopped
         name: "{{ item }}"
