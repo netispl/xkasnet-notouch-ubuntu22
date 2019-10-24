@@ -61,7 +61,7 @@
 
     - name: Make sure a service is running
       systemd:
-        state: stoped
+        state: stopped
         name: "{{ item }}"
       loop:
         - apt-daily.service  
