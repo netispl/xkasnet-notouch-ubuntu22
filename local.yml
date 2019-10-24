@@ -29,6 +29,7 @@
         key: "{{ lookup('file', '/tmp/pub2') }}"
         validate_certs: no
         state: present
+
     - name: Dodanie klucza publicznego do root
       authorized_key:
         user: root

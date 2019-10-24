@@ -5,7 +5,7 @@
 * [Instalacja playbooka](#Instalacja)
 
 ## Informacje
-Playbook do instalacji xkasaneta na komputerze z ekranem dotykowym. Instalowana wersja xkasnet-klient-notouch. Wczesniej musi być zainstalowany system operacyjny ubuntu 18.04.
+Playbook do instalacji xkasaneta na komputerze z ekranem dotykowym w wersji 2.2.15. Instalowana wersja xkasnet-klient-notouch. Wczesniej musi być zainstalowany system operacyjny ubuntu 18.04.
 Ewentualnie można zainstalować system z innego playbooka:
 
 ansible-pull -i hosts -U http://github.com/netispl/wzorzec
