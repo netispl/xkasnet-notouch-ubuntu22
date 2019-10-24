@@ -1,4 +1,4 @@
-- name: Ansible instalacja kasy z ekranem niedotykowym
+- name: Ansible instalacja kasy z ekranem dotykowym 2.2.15
   hosts: localhost
   user: root
   connection: local
