@@ -59,6 +59,14 @@
       hostname:
         name: kasaX
 
+    - name: Make sure a service is running
+      systemd:
+        state: stoped
+        name: {{ item }}
+      loop:
+        - apt-daily.service  
+        - apt-daily-timer  
+
     - name: Usuniecie paczek gnome, kde, lightdm
       apt:
         name: "{{ item }}"
