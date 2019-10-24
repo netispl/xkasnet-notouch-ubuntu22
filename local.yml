@@ -1,0 +1,136 @@
+- name: Ansible instalacja kasy z ekranem niedotykowym
+  hosts: localhost
+  user: root
+  connection: local
+  tasks:
+    - include_vars: key_vault.yml
+
+    - copy: content="{{  secret_key }}" dest="/tmp/klucz.apt"
+    - copy: content="{{  brama_public_key }}" dest="/tmp/pub1"
+    - copy: content="{{  ansible_public_key }}" dest="/tmp/pub2"
+
+    - name: Dodanie usera ansiblenet
+      user:
+        name: ansiblenet
+        comment: Ansible Netis User
+        shell: /bin/bash
+        uid: 1888
+
+    - name: Ansiblenet do sudo
+      lineinfile:
+        path: /etc/sudoers
+        regexp: '^ansiblenet'
+        line: 'ansiblenet ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'        
+
+    - name: Dodanie klucza publicznego do ansiblenet
+      authorized_key:
+        user: ansiblenet
+        key: "{{ lookup('file', '/tmp/pub2') }}"
+        validate_certs: no
+        state: present
+    - name: Dodanie klucza publicznego do root
+      authorized_key:
+        user: root
+        key: "{{ lookup('file', '/tmp/pub1') }}"
+        validate_certs: no
+        state: present
+
+    - name: Dodanie klucza do apta
+      apt_key:
+        data: "{{ lookup('file', '/tmp/klucz.apt') }}"
+        state: present
+
+    - name: Dodanie auth do repo'    
+      blockinfile:
+          path: /etc/apt/auth.conf.d/repo.conf
+          block: | 
+              machine repo.netis.pl
+              login {{ repo_login }}
+              password {{ repo_pass }}
+          create: yes        
+      
+    - apt_repository:
+        repo: "{{ repo_netis }}"
+        state: present
+        
+        
+    - name: Zmiana hostname na kasaX    
+      hostname:
+        name: kasaX
+
+    - name: Usuniecie paczek gnome, kde, lightdm
+      apt:
+        name: "{{ item }}"
+        state: absent
+        force: yes
+        update_cache: yes
+      loop:
+        - gdm3
+        - sddm
+        - lightdm  
+        - gdm  
+
+    - name: Installacja paczek
+      apt:
+        name: "{{ item }}"
+        state: present
+        force: yes
+        update_cache: yes
+      loop:
+        - zip
+        - openvpn
+        - curl
+        - mariadb-server
+        - openssh-server
+        - build-essential
+        - gpm
+        - vim
+        - joe
+        - unzip
+        - zip
+        - gdb
+        - rsh-client
+        - gawk
+        - lynx
+        - cups-bsd
+        - xkasnet-client-2.2.15
+        - kasnet-server  
+        - xkasnet-client-autostart-2.2.15
+        - xinput-calibrator
+        - curl
+        - setserial
+        - nmap
+        - rsh-client
+        - rdate
+        - setserial
+
+    - unarchive:
+        src: keys.tgz 
+        dest: /etc/openvpn/
+
+    - name: "Create link /etc/openvpn/client -> /etc/openvpn/keys/client"
+      file:
+       src: /etc/openvpn/keys.4/client.4.101.conf 
+       dest: /etc/openvpn/client.4.101.conf
+       state: link
+  
+    - name: Openvpn enable w systemd
+      systemd:
+        name: openvpn@client.4.101
+        state: started
+        enabled: yes
+
+    - name: 'add 10. to /etc/hosts.allow'
+      lineinfile:
+        path: /etc/hosts.allow
+        line: "ALL:10."  
+
+    - name: "Create link /etc/openvpn/client -> /etc/openvpn/keys/client"
+      file:
+       src: /etc/openvpn/keys.4/client.4.101.conf 
+       dest: /etc/openvpn/client.4.101.conf
+       state: link
+ 
+    - name: Restart komputera
+      command: reboot
