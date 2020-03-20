@@ -104,6 +104,7 @@
         - rsh-client
         - gawk
         - lynx
+        - xorg
         - cups-bsd
         - xkasnet-client-2.2.15
         - kasnet-server  
