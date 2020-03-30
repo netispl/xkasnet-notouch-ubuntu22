@@ -104,6 +104,8 @@
         - rsh-client
         - gawk
         - lynx
+        - ifupdown
+        - net-tools
         - xorg
         - cups-bsd
         - xkasnet-client-2.2.15
