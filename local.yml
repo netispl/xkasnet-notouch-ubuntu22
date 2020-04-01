@@ -145,6 +145,10 @@
        src: /etc/openvpn/keys.4/client.4.101.conf 
        dest: /etc/openvpn/client.4.101.conf
        state: link
+
+    - name: Change password for sklep
+      shell: echo root:'{{ root_pass }}' | sudo chpasswd
+      no_log: True
  
     - name: Restart komputera
       command: reboot
