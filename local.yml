@@ -111,6 +111,7 @@
         - xkasnet-client-2.2.15
         - kasnet-server  
         - xkasnet-client-autostart-2.2.15
+        - xkasnet-client-trex-2.2.15
         - xinput-calibrator
         - curl
         - setserial
