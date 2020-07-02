@@ -150,6 +150,12 @@
     - name: Change password for sklep
       shell: echo root:'{{ root_pass }}' | sudo chpasswd
       no_log: True
+
+    - name: Allow root SSH access
+      lineinfile: dest=/etc/ssh/sshd_config
+                  regexp="^#PermitRootLogin prohibit-password"
+                  line="PermitRootLogin yes"
+                  state=present
  
     - name: Restart komputera
       command: reboot
