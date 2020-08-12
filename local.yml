@@ -106,10 +106,15 @@
         - lynx
         - ifupdown
         - net-tools
+        - openjdk-8-jre
+        - fonts-roboto
+        - fonts-roboto-fontface
+        - fonts-roboto-hinted
+        - fonts-roboto-unhinted
         - xorg
         - cups-bsd
         - xkasnet-client-2.2.15
-        - kasnet-server  
+        - kasnet-server-2.1.326
         - xkasnet-client-autostart-2.2.15
         - xkasnet-client-trex-2.2.15
         - xinput-calibrator
@@ -156,6 +161,12 @@
                   regexp="^#PermitRootLogin prohibit-password"
                   line="PermitRootLogin yes"
                   state=present
+
+    - name: chown /home/xkasnet
+      file:
+         path: /home/xkasnet/
+         owner: kasa 
+         group: kasa 
  
     - name: Restart komputera
       command: reboot
