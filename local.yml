@@ -167,6 +167,8 @@
          path: /home/xkasnet/
          owner: kasa 
          group: kasa 
+         state: directory
+         recurse: yes
  
     - name: Restart komputera
       command: reboot
