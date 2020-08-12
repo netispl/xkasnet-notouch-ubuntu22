@@ -162,13 +162,13 @@
                   line="PermitRootLogin yes"
                   state=present
 
-    - name: chown /home/xkasnet
+    - name: chmod /home/xkasnet
       file:
-         path: /home/xkasnet/
-         owner: kasa 
-         group: kasa 
-         state: directory
-         recurse: yes
- 
+        path: /home/xkasnet/
+        state: directory
+        recurse: yes
+        owner: kasa
+        group: kasa
+
     - name: Restart komputera
       command: reboot
