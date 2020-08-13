@@ -187,9 +187,9 @@
       loop:
         - xkasnet-client-2.2.15
         - kasnet-server-2.1.326=2.1.326r202007081056~bionic-1
-        - xkasnet-client-autostart-2.2.15
         - xkasnet-client-trex-2.2.15
         - xinput-calibrator
+        - xkasnet-client-autostart-2.2.15
 
 
         #   - name: Restart komputera
