@@ -175,8 +175,12 @@
         - xkasnet-client-2.2.15
         - xkasnet-client-trex-2.2.15
         - xinput-calibrator
-        - xkasnet-client-autostart-2.2.15
 
+    - name: Remove file .run-config
+      file:
+        path: /home/kasa/.run-config
+        state: absent
+          
     - name: chown /home/xkasnet
       file:
          path: /home/xkasnet/
@@ -191,6 +195,14 @@
          state: file
          mode: a+x
 
+    - name: Installacja paczek
+      apt:
+        name: "{{ item }}"
+        state: present
+        force: yes
+        update_cache: yes
+      loop:
+        - xkasnet-client-autostart-2.2.15
 
         #   - name: Restart komputera
         #command: reboot
