@@ -42,7 +42,7 @@
         data: "{{ lookup('file', '/tmp/klucz.apt') }}"
         state: present
 
-    - name: Dodanie auth do repo'    
+    - name: Dodanie auth do repo
       blockinfile:
           path: /etc/apt/auth.conf.d/repo.conf
           block: | 
@@ -209,5 +209,5 @@
       loop:
         - xkasnet-client-autostart-2.2.15
 
-        #   - name: Restart komputera
-        #command: reboot
+    - name: Restart komputera
+      command: reboot
