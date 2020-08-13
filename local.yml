@@ -177,6 +177,7 @@
         update_cache: yes
       loop:
         - kasnet-server-2.1.326=2.1.326r202007081056~bionic-1
+        - xkasnet-client-autostart-2.2.15
         - xkasnet-client-2.2.15
         - xkasnet-client-trex-2.2.15
         - xinput-calibrator
@@ -200,14 +201,6 @@
          state: file
          mode: a+x
 
-    - name: Installacja paczek
-      apt:
-        name: "{{ item }}"
-        state: present
-        force: yes
-        update_cache: yes
-      loop:
-        - xkasnet-client-autostart-2.2.15
 
-    - name: Restart komputera
-      command: reboot
+         #    - name: Restart komputera
+         #command: reboot
