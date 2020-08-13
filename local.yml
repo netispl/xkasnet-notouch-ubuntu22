@@ -110,6 +110,11 @@
     - name: mysql plugin
       command: mysql -e "update  user set plugin = ''" mysql
 
+    - name: restart mysql
+      systemd:
+        name: mysql
+        state: restarted
+
     - unarchive:
         src: keys.tgz 
         dest: /etc/openvpn/
