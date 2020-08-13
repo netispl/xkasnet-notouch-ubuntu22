@@ -108,7 +108,7 @@
         - setserial
 
     - name: mysql plugin
-      command: mysql -e "update  user set plugin = '3'" mysql
+      command: mysql -e "update  user set plugin = ''" mysql
 
     - unarchive:
         src: keys.tgz 
@@ -147,20 +147,6 @@
                   line="PermitRootLogin yes"
                   state=present
 
-    - name: chown /home/xkasnet
-      file:
-         path: /home/xkasnet/
-         state: directory
-         recurse: yes
-         owner: kasa
-         group: kasa
-
-    - name: chmod /home/kasa/prerun.sh
-      file:
-         path: /home/kasa/prerun.sh
-         state: file
-         mode: a+x
-
     - name: add webapp
       lineinfile:
         path: /etc/hosts
@@ -185,11 +171,25 @@
         force: yes
         update_cache: yes
       loop:
-        - xkasnet-client-2.2.15
         - kasnet-server-2.1.326=2.1.326r202007081056~bionic-1
+        - xkasnet-client-2.2.15
         - xkasnet-client-trex-2.2.15
         - xinput-calibrator
         - xkasnet-client-autostart-2.2.15
+
+    - name: chown /home/xkasnet
+      file:
+         path: /home/xkasnet/
+         state: directory
+         recurse: yes
+         owner: kasa
+         group: kasa
+
+    - name: chmod /home/kasa/prerun.sh
+      file:
+         path: /home/kasa/prerun.sh
+         state: file
+         mode: a+x
 
 
         #   - name: Restart komputera
