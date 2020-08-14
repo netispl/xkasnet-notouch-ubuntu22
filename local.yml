@@ -51,15 +51,6 @@
               password {{ repo_pass }}
           create: yes        
 
-    - name: Wylaczenie aktualizcji apta na czas instalacji
-      systemd:
-        state: stopped
-        name: "{{ item }}"
-      loop:
-        - apt-daily.service  
-        - apt-daily.timer  
-        - apt-daily-upgrade.timer  
-
       
     - apt_repository:
         repo: "{{ repo_netis }}"
