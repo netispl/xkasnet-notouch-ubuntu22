@@ -106,6 +106,7 @@
         - rsh-client
         - rdate
         - setserial
+        - xinput-calibrator
 
     - name: mysql plugin
       command: mysql -e "update  user set plugin = ''" mysql
@@ -179,7 +180,6 @@
         - xkasnet-client-2.2.15
         - xkasnet-client-trex-2.2.15
         - xkasnet-client-autostart-2.2.15
-        - xinput-calibrator
 
     - name: Remove file .run-config
       file:
@@ -199,9 +199,6 @@
          path: /home/kasa/prerun.sh
          state: file
          mode: a+x
-
-    - pause:
-        seconds: 10
 
     - name: Restart komputera
       command: reboot
