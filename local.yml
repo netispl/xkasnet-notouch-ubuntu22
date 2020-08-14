@@ -149,7 +149,7 @@
         force: yes
       loop:
         - kasnet-server-2.1.326=2.1.326r202007081056~bionic-1
-        - xkasnet-client-2.2.15
+        - xkasnet-client-2.2.15=2.2.15r2.2.15r202008080947~bionic-2
         - xkasnet-client-trex-2.2.15
         - xkasnet-client-autostart-2.2.15
 
@@ -182,7 +182,6 @@
         - sddm
         - lightdm  
         - gdm  
-
 
     - name: sleep for 30sec
       wait_for:
