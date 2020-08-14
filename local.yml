@@ -182,10 +182,10 @@
         - xkasnet-client-autostart-2.2.15
         - xinput-calibrator
 
-    - name: Remove file .run-config
-      file:
-        path: /home/kasa/.run-config
-        state: absent
+          #    - name: Remove file .run-config
+          #file:
+          #path: /home/kasa/.run-config
+          #state: absent
           
     - name: chown /home/xkasnet
       file:
@@ -201,6 +201,8 @@
          state: file
          mode: a+x
 
+    - pause:
+        seconds: 10
 
-         #    - name: Restart komputera
-         #command: reboot
+    - name: Restart komputera
+      command: reboot
