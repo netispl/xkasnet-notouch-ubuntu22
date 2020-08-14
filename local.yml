@@ -77,7 +77,6 @@
         force: yes
         update_cache: yes
       loop:
-        - zip
         - openvpn
         - curl
         - mariadb-server
@@ -86,10 +85,7 @@
         - gpm
         - vim
         - joe
-        - unzip
         - gdb
-        - rsh-client
-        - gawk
         - lynx
         - ifupdown
         - net-tools
@@ -104,7 +100,6 @@
         - setserial
         - nmap
         - rsh-client
-        - rdate
         - setserial
         - xinput-calibrator
 
