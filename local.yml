@@ -142,17 +142,6 @@
         path: /etc/hosts
         line: "195.8.106.129 webapp.pep.pl"
 
-    - name: Usuniecie paczek gnome, kde, lightdm
-      apt:
-        name: "{{ item }}"
-        state: absent
-        force: yes
-      loop:
-        - gdm3
-        - sddm
-        - lightdm  
-        - gdm  
-
     - name: Installacja paczek
       apt:
         name: "{{ item }}"
@@ -183,10 +172,22 @@
          state: file
          mode: a+x
 
-          #    - name: sleep for 30sec
-          #wait_for:
-          #timeout: 30
-          #delegate_to: localhost
+    - name: Usuniecie paczek gnome, kde, lightdm
+      apt:
+        name: "{{ item }}"
+        state: absent
+        force: yes
+      loop:
+        - gdm3
+        - sddm
+        - lightdm  
+        - gdm  
+
+
+    - name: sleep for 30sec
+      wait_for:
+        timeout: 45
+      delegate_to: localhost
 
 
     - name: Restart komputera
