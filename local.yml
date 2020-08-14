@@ -183,5 +183,11 @@
         - lightdm  
         - gdm  
 
+    - name: sleep for 30sec
+      wait_for:
+        timeout: 30
+      delegate_to: localhost
+
+
     - name: Restart komputera
       command: reboot
