@@ -87,8 +87,6 @@
         - fonts-roboto-unhinted
         - xorg
         - cups-bsd
-        - curl
-        - setserial
         - nmap
         - rsh-client
         - setserial
@@ -144,17 +142,6 @@
         path: /etc/hosts
         line: "195.8.106.129 webapp.pep.pl"
 
-    - name: Usuniecie paczek gnome, kde, lightdm
-      apt:
-        name: "{{ item }}"
-        state: absent
-        force: yes
-      loop:
-        - gdm3
-        - sddm
-        - lightdm  
-        - gdm  
-
     - name: Installacja paczek
       apt:
         name: "{{ item }}"
@@ -184,6 +171,17 @@
          path: /home/kasa/prerun.sh
          state: file
          mode: a+x
+
+    - name: Usuniecie paczek gnome, kde, lightdm
+      apt:
+        name: "{{ item }}"
+        state: absent
+        force: yes
+      loop:
+        - gdm3
+        - sddm
+        - lightdm  
+        - gdm  
 
     - name: Restart komputera
       command: reboot
