@@ -149,7 +149,6 @@
         name: "{{ item }}"
         state: absent
         force: yes
-        update_cache: yes
       loop:
         - gdm3
         - sddm
