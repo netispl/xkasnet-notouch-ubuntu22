@@ -144,19 +144,18 @@
 
     - name: Installacja paczek
       apt:
-        name: "{{ item }}"
+        name:
+          - kasnet-server-2.1.326=2.1.326r202007081056~bionic-1
+          - kasnet-config-2.1.326=2.1.326r202007081056~bionic-1
+          - kasnet-libwaga-2.1.326=2.1.326r202007081056~bionic-1
+          - kasnet-src-2.1.326=2.1.326r202007081056~bionic-1
+          - kasnet-client-2.1.326=2.1.326r202007081056~bionic-1
+          - kasnet-tools-2.1.326=2.1.326r202007081056~bionic-1
+          - xkasnet-client-2.2.15=2.2.15r202008080947~bionic-2
+          - xkasnet-client-trex-2.2.15=2.2.15r202008080947~bionic-2
+          - xkasnet-client-autostart-2.2.15=2.2.15r202008080947~bionic-2
         state: present
         force: yes
-      loop:
-        - kasnet-server-2.1.326=2.1.326r202007081056~bionic-1
-        - kasnet-config-2.1.326=2.1.326r202007081056~bionic-1
-        - kasnet-libwaga-2.1.326=2.1.326r202007081056~bionic-1
-        - kasnet-src-2.1.326=2.1.326r202007081056~bionic-1
-        - kasnet-client-2.1.326=2.1.326r202007081056~bionic-1
-        - kasnet-tools-2.1.326=2.1.326r202007081056~bionic-1
-        - xkasnet-client-2.2.15=2.2.15r202008080947~bionic-2
-        - xkasnet-client-trex-2.2.15=2.2.15r202008080947~bionic-2
-        - xkasnet-client-autostart-2.2.15=2.2.15r202008080947~bionic-2
 
     - name: Remove file .run-config
       file:
