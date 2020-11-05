@@ -186,6 +186,19 @@
         - sddm
         - lightdm  
         - gdm  
+    
+    - name: dodanie DNS /etc/systemd/resolved.conf
+      lineinfile: dest=/etc/systemd/resolved.conf
+                  regexp="^#DNS="
+                  line="DNS=8.8.8.8"
+                  state=present
+
+    - name: Restart resolvd
+      systemd:
+         state: restarted
+         name: "{{ item }}"
+      loop:
+         - systemd-resolved.service
 
     - name: sleep for 30sec
       wait_for:
