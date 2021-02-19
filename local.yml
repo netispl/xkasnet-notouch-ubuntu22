@@ -115,6 +115,12 @@
         name: openvpn@client.4.101
         state: started
         enabled: yes
+        
+    - name: NetworkManager disable w systemd
+      systemd:
+         name: NetworkManager
+         state: stopped
+         enabled: no        
 
     - name: 'add 10. to /etc/hosts.allow'
       lineinfile:
