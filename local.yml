@@ -120,7 +120,13 @@
       systemd:
          name: NetworkManager
          state: stopped
-         enabled: no        
+         enabled: no
+         
+    - name: chmod -x /usr/sbin/ModemManager
+      file:
+         path: /usr/sbin/ModemManager
+         state: file
+         mode: -x
 
     - name: 'add 10. to /etc/hosts.allow'
       lineinfile:
