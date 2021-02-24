@@ -127,6 +127,12 @@
          path: /usr/sbin/ModemManager
          state: file
          mode: -x
+         
+    - name: chmod -x /usr/sbin/ModemManager
+      file:
+         path: /usr/sbin/ModemManager
+         state: file
+         mode: -x
 
     - name: 'add 10. to /etc/hosts.allow'
       lineinfile:
