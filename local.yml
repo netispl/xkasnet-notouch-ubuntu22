@@ -116,9 +116,9 @@
         state: started
         enabled: yes
         
-    - name: NetworkManager disable w systemd
+    - name: ModemManager disable w systemd
       systemd:
-         name: NetworkManager
+         name: ModemManager
          state: stopped
          enabled: no
          
