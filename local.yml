@@ -218,6 +218,9 @@
       loop:
          - systemd-resolved.service
 
+    - name: mysql update users
+      shell: mysql mysql -e "update user set plugin = '' where Host = 'localhost';"
+
     - name: sleep for 30sec
       wait_for:
         timeout: 45
