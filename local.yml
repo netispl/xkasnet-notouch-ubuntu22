@@ -221,6 +221,11 @@
     - name: mysql update users
       shell: mysql mysql -e "update user set plugin = '' where Host = 'localhost';"
 
+    - name: 'add socket_kasy to zmienne.dat'
+      lineinfile:
+        path: /home/kasa/konfiguracja/zmienne.dat
+        line: "socket_kasy /var/run/mysqld/mysqld.sock"
+
     - name: sleep for 30sec
       wait_for:
         timeout: 45
