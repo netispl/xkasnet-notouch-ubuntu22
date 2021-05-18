@@ -91,9 +91,10 @@
         - rsh-client
         - setserial
         - xinput-calibrator
-
-    - name: mysql plugin
-      command: mysql -e "update  user set plugin = ''" mysql
+   
+   
+    - name: mysql update users
+      shell: mysql mysql -e "update user set plugin = '' where Host = 'localhost';"
 
     - name: restart mysql
       systemd:
@@ -126,13 +127,7 @@
       file:
          path: /usr/sbin/ModemManager
          state: file
-         mode: -x
-         
-    - name: chmod -x /usr/sbin/ModemManager
-      file:
-         path: /usr/sbin/ModemManager
-         state: file
-         mode: -x
+         mode: -x 
 
     - name: 'add 10. to /etc/hosts.allow'
       lineinfile:
@@ -163,15 +158,15 @@
     - name: Installacja paczek
       apt:
         name:
-          - kasnet-server-2.1.326=2.1.326r202010061104~bionic-1
-          - kasnet-config-2.1.326=2.1.326r202010061104~bionic-1
-          - kasnet-libwaga-2.1.326=2.1.326r202010061104~bionic-1
-          - kasnet-src-2.1.326=2.1.326r202010061104~bionic-1
-          - kasnet-client-2.1.326=2.1.326r202010061104~bionic-1
-          - kasnet-tools-2.1.326=2.1.326r202010061104~bionic-1
-          - xkasnet-client-2.2.15=2.2.15r202009080910~bionic-1
-          - xkasnet-client-trex-2.2.15=2.2.15r202009080910~bionic-1
-          - xkasnet-client-autostart-2.2.15=2.2.15r202009080910~bionic-1
+          - kasnet-server-2.1.333=2.1.333r202104151324~bionic-1
+          - kasnet-config-2.1.333=2.1.333r202104151324~bionic-1
+          - kasnet-libwaga-2.1.333=2.1.333r202104151324~bionic-1
+          - kasnet-src-2.1.333=2.1.333r202104151324~bionic-1
+          - kasnet-client-2.1.333=2.1.333r202104151324~bionic-1
+          - kasnet-tools-2.1.333=2.1.333r202104151324~bionic-1
+          - xkasnet-client-2.2.15=2.2.15r202105071134~bionic-1
+          - xkasnet-client-trex-2.2.15=2.2.15r202105071134~bionic-1
+          - xkasnet-client-autostart-2.2.15=2.2.15r202105071134~bionic-1
         state: present
         force: yes
 
@@ -218,19 +213,20 @@
       loop:
          - systemd-resolved.service
 
-    - name: mysql update users
-      shell: mysql mysql -e "update user set plugin = '' where Host = 'localhost';"
 
     - name: 'add socket_kasy to zmienne.dat'
       lineinfile:
         path: /home/kasa/konfiguracja/zmienne.dat
         line: "socket_kasy /var/run/mysqld/mysqld.sock"
 
+    - name: Informacja
+      debug:
+        msg: "Instalacja zostala zakonczona. Komputer zostanie automatycznie zrestartowany. Prosze czekac..."
+
     - name: sleep for 30sec
       wait_for:
         timeout: 45
       delegate_to: localhost
-
-
+      
     - name: Restart komputera
       command: reboot
