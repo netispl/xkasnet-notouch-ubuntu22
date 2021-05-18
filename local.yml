@@ -134,11 +134,6 @@
         path: /etc/hosts.allow
         line: "ALL:10."  
 
-    - name: "Create link /etc/openvpn/client -> /etc/openvpn/keys/client"
-      file:
-       src: /etc/openvpn/keys.4/client.4.101.conf 
-       dest: /etc/openvpn/client.4.101.conf
-       state: link
 
     - name: Change password for sklep
       shell: echo root:'{{ root_pass }}' | sudo chpasswd
