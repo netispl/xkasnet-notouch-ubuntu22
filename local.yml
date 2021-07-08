@@ -213,7 +213,16 @@
       lineinfile:
         path: /home/kasa/konfiguracja/zmienne.dat
         line: "socket_kasy /var/run/mysqld/mysqld.sock"
+      
+    - name: '/etc/default/grub - net.ifnames i biosdevname'
+      lineinfile:
+         path: /etc/default/grub
+         line: 'GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"'
+         regexp: '^GRUB_CMDLINE_LINUX=""'
 
+    - name: Update grub
+      shell: "update-grub"
+      
     - name: Informacja
       debug:
         msg: "Instalacja zostala zakonczona. Komputer zostanie automatycznie zrestartowany. Prosze czekac..."
