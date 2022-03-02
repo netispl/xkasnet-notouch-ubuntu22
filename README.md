@@ -13,8 +13,8 @@ ansible-pull -i hosts -U http://github.com/netispl/wzorzec
 Dotakowo dodawny jest user ansiblenet i vpn.
 
 ## Wymagania
-Testowane na Ubuntu 18.04 64 bit desktop
-http://releases.ubuntu.com/18.04/ubuntu-18.04.3-desktop-amd64.iso
+Testowane na Ubuntu 22.04 64 bit desktop
+https://cdimage.ubuntu.com/daily-live/current/jammy-desktop-amd64.iso
 
 W celu odpalenia playbooka nalezy uruchomić:
 
@@ -27,7 +27,7 @@ W celu odpalenia playbooka nalezy uruchomić:
 Instalacja projektu (wymaga podania hasła do odszyfrowania klucza):
 
 ```
- ansible-pull --vault-id @prompt -i hosts -U http://github.com/netispl/xkasnet-touch-2.15
+ ansible-pull --vault-id @prompt -i hosts -U http://github.com/netispl/xkasnet-touch-2.15-ubuntu22
 ```
 
 
