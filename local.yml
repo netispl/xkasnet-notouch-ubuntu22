@@ -55,6 +55,7 @@
     - apt_repository:
         repo: "{{ repo_netis }}"
         state: present
+      ignore_errors: yes
         
         
     - name: Zmiana hostname na kasaX    
