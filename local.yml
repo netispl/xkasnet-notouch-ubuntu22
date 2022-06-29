@@ -131,15 +131,15 @@
     - name: Installacja paczek
       apt:
         name:
-          - kasnet-server-2.1.333=2.1.333r202105060854~bionic-1
-          - kasnet-config-2.1.333=2.1.333r202105060854~bionic-1
-          - kasnet-libwaga-2.1.333=2.1.333r202105060854~bionic-1
-          - kasnet-src-2.1.333=2.1.333r202105060854~bionic-1
-          - kasnet-client-2.1.333=2.1.333r202105060854~bionic-1
-          - kasnet-tools-2.1.333=2.1.333r202105060854~bionic-1
-          - xkasnet-client-2.2.15=2.2.15r202105071134~bionic-1
-          - xkasnet-client-trex-2.2.15=2.2.15r202105071134~bionic-1
-          - xkasnet-client-autostart-2.2.15=2.2.15r202105071134~bionic-1
+          - kasnet-server-2.1.335
+          - kasnet-config-2.1.335
+          - kasnet-libwaga-2.1.335
+          - kasnet-src-2.1.335
+          - kasnet-client-2.1.335
+          - kasnet-tools-2.1.335
+          - xkasnet-client-2.2.17
+            #          - xkasnet-client-autostart-2.2.17
+          - x-pos-launcher
         state: present
         force: yes
 
