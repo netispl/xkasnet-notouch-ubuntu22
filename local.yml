@@ -94,14 +94,6 @@
         - xinput-calibrator
    
    
-    - name: mysql update users
-      shell: mysql mysql -e "update user set plugin = '' where Host = 'localhost';"
-
-    - name: restart mysql
-      systemd:
-        name: mysql
-        state: restarted
-
         
     - name: ModemManager disable w systemd
       systemd:
