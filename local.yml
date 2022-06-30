@@ -23,6 +23,23 @@
         line: 'ansiblenet ALL=(ALL) NOPASSWD: ALL'
         validate: 'visudo -cf %s'        
 
+    - name: 'konfiguracja apt'
+      lineinfile:
+        path: /etc/apt/apt.conf.d/99no-check-valid-until
+        line: "Acquire::Check-Valid-Until no;"
+          
+    - name: 'konfiguracja1 apt'
+      lineinfile:
+         path: /etc/apt/apt.conf.d/20auto-upgrades
+         line: 'APT::Periodic::Unattended-Upgrade "1";'
+         regexp: '^APT::Periodic::Unattended-Upgrade "0";'
+           
+    - name: 'konfiguracja2 apt'
+      lineinfile:
+         path: /etc/apt/apt.conf.d/20auto-upgrades
+         line: 'APT::Periodic::Update-Package-Lists "1";'
+         regexp: '^APT::Periodic::Update-Package-Lists "0";'
+           
     - name: Dodanie klucza publicznego do ansiblenet
       authorized_key:
         user: ansiblenet
