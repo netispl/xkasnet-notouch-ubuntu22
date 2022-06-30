@@ -27,18 +27,21 @@
       lineinfile:
         path: /etc/apt/apt.conf.d/99no-check-valid-until
         line: "Acquire::Check-Valid-Until no;"
+        state: present
           
     - name: 'konfiguracja1 apt'
       lineinfile:
          path: /etc/apt/apt.conf.d/20auto-upgrades
          line: 'APT::Periodic::Unattended-Upgrade "1";'
          regexp: '^APT::Periodic::Unattended-Upgrade "0";'
+         state: present
            
     - name: 'konfiguracja2 apt'
       lineinfile:
          path: /etc/apt/apt.conf.d/20auto-upgrades
          line: 'APT::Periodic::Update-Package-Lists "1";'
          regexp: '^APT::Periodic::Update-Package-Lists "0";'
+         state: present
            
     - name: Dodanie klucza publicznego do ansiblenet
       authorized_key:
