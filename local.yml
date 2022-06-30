@@ -23,6 +23,11 @@
         line: 'ansiblenet ALL=(ALL) NOPASSWD: ALL'
         validate: 'visudo -cf %s'        
 
+    - name: Creating 99no-check-valid-until
+      file:
+        path: "/etc/apt/apt.conf.d/99no-check-valid-until"
+        state: touch
+
     - name: 'konfiguracja apt'
       lineinfile:
         path: /etc/apt/apt.conf.d/99no-check-valid-until
