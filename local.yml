@@ -79,7 +79,6 @@
         - joe
         - gdb
         - lynx
-        - ifupdown
         - net-tools
         - openjdk-8-jre
         - fonts-roboto
