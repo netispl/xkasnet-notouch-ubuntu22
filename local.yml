@@ -155,12 +155,6 @@
          owner: kasa
          group: kasa
 
-    - name: chmod /home/kasa/prerun.sh
-      file:
-         path: /home/kasa/prerun.sh
-         state: file
-         mode: a+x
-
     - name: Usuniecie paczek gnome, kde, lightdm
       apt:
         name: "{{ item }}"
@@ -184,6 +178,10 @@
          name: "{{ item }}"
       loop:
          - systemd-resolved.service
+
+
+    - name: mysql update users
+      shell: mysql mysql -e "ALTER USER root@localhost IDENTIFIED VIA mysql_native_password USING PASSWORD('');"            
 
 
     - name: 'add socket_kasy to zmienne.dat'
