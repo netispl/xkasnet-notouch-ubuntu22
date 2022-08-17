@@ -47,7 +47,13 @@
          line: 'APT::Periodic::Update-Package-Lists "1";'
          regexp: '^APT::Periodic::Update-Package-Lists "0";'
          state: present
-           
+         
+    - name: unattended-upgrades.service restart
+      systemd:
+         name: unattended-upgrades.service
+         state: restarted
+         enabled: no
+         
     - name: Dodanie klucza publicznego do ansiblenet
       authorized_key:
         user: ansiblenet
