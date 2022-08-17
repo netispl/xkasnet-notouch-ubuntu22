@@ -6,11 +6,7 @@
 
 ## Informacjee
 Playbook do instalacji xkasaneta na komputerze z ekranem niedotykowym w wersji 2.2.17. Instalowana wersja xkasnet-klient-notouch. Wczesniej musi być zainstalowany system operacyjny ubuntu 22.04.
-Ewentualnie można zainstalować system z innego playbooka:
 
-ansible-pull -i hosts -U http://github.com/netispl/wzorzec
-
-Dotakowo dodawny jest user ansiblenet i vpn.
 
 ## Wymagania
 Testowane na Ubuntu 22.04 64 bit desktop
