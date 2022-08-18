@@ -173,10 +173,10 @@
         state: present
         force: yes
 
-    - name: Remove file .run-config
+    - name: Touch file .run-config
       file:
          path: /home/kasa/.run-config
-         state: absent
+         state: present
           
     - name: chown /home/xkasnet
       file:
