@@ -235,9 +235,9 @@
       debug:
         msg: "Instalacja zostala zakonczona. Komputer zostanie automatycznie zrestartowany. Prosze czekac..."
 
-    - name: sleep for 30sec
+    - name: sleep 15sec
       wait_for:
-        timeout: 45
+        timeout: 15
       delegate_to: localhost
 
     - name: Restart komputera
