@@ -176,7 +176,7 @@
     - name: Touch file .run-config
       file:
          path: /home/kasa/.run-config
-         state: present
+         state: touch
           
     - name: chown /home/xkasnet
       file:
@@ -186,16 +186,6 @@
          owner: kasa
          group: kasa
 
-    - name: Usuniecie paczek gnome, kde, lightdm
-      apt:
-        name: "{{ item }}"
-        state: absent
-        force: yes
-      loop:
-        - gdm3
-        - sddm
-        - lightdm  
-        - gdm  
     
     - name: dodanie DNS /etc/systemd/resolved.conf
       lineinfile: dest=/etc/systemd/resolved.conf
@@ -228,7 +218,19 @@
 
     - name: Update grub
       shell: "update-grub"
+
       
+    - name: Usuniecie paczek gnome, kde, lightdm
+      apt:
+        name: "{{ item }}"
+        state: absent
+        force: yes
+      loop:
+        - sddm
+        - lightdm  
+        - gdm  
+        - gdm3
+        
     - name: Informacja
       debug:
         msg: "Instalacja zostala zakonczona. Komputer zostanie automatycznie zrestartowany. Prosze czekac..."
@@ -237,6 +239,6 @@
       wait_for:
         timeout: 45
       delegate_to: localhost
-      
+
     - name: Restart komputera
       command: reboot
